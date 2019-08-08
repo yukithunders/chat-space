@@ -7,8 +7,8 @@
 
 ###Asssociation
 - has_many :members
-- has_many :group, through: :members
-- has_many :message
+- has_many :groups, through: :members
+- has_many :messages
 
 ##groupsテーブル
 |Column|Type|Options|
@@ -17,8 +17,8 @@
 
 ###Association
 - has_many :members
-- has_many :user, through :members
-- has_many :message
+- has_many :users, through :members
+- has_many :messages
 
 ##messagesテーブル
 |Column|Type|Options|
@@ -29,8 +29,8 @@
 |user_id|references|null: false,foreign_key: true|
 
 ##Association
-- belongs_to :user
-- belongs_to :group
+- belongs_to :users
+- belongs_to :groups
 
 ##membersテーブル
 |Column|Type|Options|
@@ -39,8 +39,8 @@
 |group_id||references||null: false, foreign_key: true|
 
 ###Association
-- belongs_to :group
-- belongs_to :user
+- belongs_to :groups
+- belongs_to :users
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
