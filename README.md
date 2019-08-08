@@ -1,36 +1,32 @@
 # README
 
-##userテーブル
+##usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false,foreign_key:true|
-|user_name|string||
-|email|string||
-|password|string|null: false|
+|name|string|null: false, index: true|
 
 ###Asssociation
 - has_many :members
 - has_many :group, through: :members
 - has_many :message
 
-##groupテーブル
+##groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group_id|integer|null: false,foreign_key: true|
-|group_name|string|null: false,unique: true|
+|name|string|null: false,unique: true|
 
 ###Association
 - has_many :members
 - has_many :user, through :members
 - has_many :message
 
-##messageテーブル
+##messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |body|text||
 |image|string||
-|group_id|integer|null: false,foreign_key: true|
-|user_id|integer|null: false,foreign_key: true|
+|group_id|references|null: false,foreign_key: true|
+|user_id|references|null: false,foreign_key: true|
 
 ##Association
 - belongs_to :user
@@ -39,8 +35,8 @@
 ##membersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false,foreign_key: true|
-|group_id||integer||null: false, foreign_key: true|
+|user_id|references|null: false,foreign_key: true|
+|group_id||references||null: false, foreign_key: true|
 
 ###Association
 - belongs_to :group
